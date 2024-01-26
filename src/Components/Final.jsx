@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Button, Card } from 'antd';
 
 import { getRandomColor } from '../Helper/Utils';
 
@@ -16,25 +17,31 @@ class Final extends Component {
     return false;
   }
     renderWinnig(){
+      return(
       <>
       <h2>Congratulations!</h2>
       <h3>You win 1000$</h3>
       <p>Your winning number was:<b>{this.props.winningNumber}</b></p>
       </>
-    }
+    )
+  }
 
     renderTryAgain(){
+      return(
       <>
       <h2>Try Again!</h2>
       <p>Winning number was:<b>{this.props.winningNumber}</b></p>
       </>
-    }
+    )
+  }
 
   render(){
     return(
-      <div style={{backgroundColor: getRandomColor(), padding: 15}}>
-          {this.isWinnig() ? this.renderWinnig() : this.renderTryAgain() }
-      </div>
+      <Card style={{backgroundColor: getRandomColor()}}
+      title =  {this.isWinnig() ? this.renderWinnig() : this.renderTryAgain() }
+      >
+          <Button block onClick={this.props.actions.reset}>NEW</Button>
+      </Card>
     )
   }
 }

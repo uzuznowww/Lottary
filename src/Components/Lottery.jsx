@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import LotteryTicket from './LotteryTicket';
+import { Button, Typography, Divider } from 'antd';
+
+const {Title} = Typography;
 
 
 class Lottery extends Component {
@@ -8,10 +11,10 @@ class Lottery extends Component {
     const { remainingTickets , actions} = this.props;
 
     if (remainingTickets > 0) {
-      return <button onClick={actions.registerTicket}>BUY TICKET</button>
+      return <Button type = 'primary' block onClick={actions.registerTicket}>BUY TICKET</Button>
     }
 
-    return <button onClick={actions.finish}>Check for profit</button>
+    return <Button type='primary' block onClick={actions.finish}>Check for profit</Button>
   }
 
   renderTicket(){
@@ -36,12 +39,12 @@ class Lottery extends Component {
   render(){
     return(
       <>
-        <h2>Lottery</h2>
+        <Title>Lottery</Title>
         {this.renderButton() }
         <br/>
         <small>remaining: {this.props.remainingTickets} </small>
         <br />
-        <hr />
+        <Divider>Yours tickets</Divider>
         {this.renderTicket()}
       </>
     );

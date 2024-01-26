@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { getRandomNumber } from './Helper/Utils';
-import { registerTicket, removeTicket, finish } from './Helper/Actions';
+import { registerTicket, removeTicket, finish, reset } from './Helper/Actions';
 import Final from './Components/Final';
 import Lottery from './Components/Lottery';
 
@@ -21,6 +21,7 @@ class App extends Component {
 		this.registerTicket = registerTicket.bind( this);
 		this.removeTicket = removeTicket.bind( this);
 		this.finish = finish.bind( this);
+		this.reset = reset.bind( this);
 	}
 
 	renderApp(){
@@ -28,6 +29,7 @@ class App extends Component {
 		const actions = {};
  
 		if (finished) {
+			actions.reset = this.reset;
 			return(
 				<Final
 					actions = {actions}
